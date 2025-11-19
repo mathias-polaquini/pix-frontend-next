@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 type RootLayoutProps ={
   children: React.ReactNode
 }
-export default function RootLayout({children}: Readonly<RootLayoutProps>) {
+export default function RootLayout({children}:{children:React.ReactNode}) {
   return (
     <html lang="pt-br">
       <body >
