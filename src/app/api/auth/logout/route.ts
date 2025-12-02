@@ -1,17 +1,14 @@
 import { NextResponse } from "next/server";
-import { serialize } from "cookie";
-import path from "path";
 
-export default function POST(){
-  const cookie = serialize ("token", "",{
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path:"/",
-    maxAge: 0
-  });
+export const runtime = "nodejs";
 
-  const res = NextResponse.json({ok:true});
-  res.headers.set("Set-Cookie", cookie);
+export async function POST() {
+  const res = NextResponse.json({ ok: true });
+
+  res.headers.set(
+    "Set-Cookie",
+    `token=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax`
+  );
+
   return res;
 }
